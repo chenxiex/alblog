@@ -2,7 +2,6 @@
 title: "你好，2023"
 date: 2022-12-31T19:40:37+08:00
 description: 一点年度杂谈
-draft: true
 image: images/11.webp
 categories:
     - 杂谈
