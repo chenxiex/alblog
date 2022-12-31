@@ -1,0 +1,45 @@
+mainSections: 
+  - post
+featuredImageField: image
+rssFullContent: true
+description: "Anlor's personal blog site"
+favicon: /images/favicon.ico
+footer:
+  since : 2022
+sidebar:
+  subtitle: 相知相遇又相期
+  compact: true
+  avatar:
+    enabled: true
+    local: true
+    src: img/avatar.webp
+article:
+  toc: true
+  math: false
+  readingTime: true
+  license: 
+    enabled: true
+    default: "Licensed under CC BY-NC-SA 4.0"
+comments:
+  enabled: true
+  provider: utterances
+  utterances:
+    repo: "chenxiex/alblog"
+    issueTerm: pathname
+    label: comment
+widgets:
+  homepage:
+    - type: search
+    - type: categories
+      params:
+        limit: 10
+    - type: archives
+      params:
+        limit: 3
+    - type: tag-cloud
+      params:
+        limit: 10
+  page:
+    - type: toc
+
+
