@@ -1,0 +1,6 @@
+social: 
+  - identifier : "github"
+    name : "github"
+    url : "https://github.com/chenxiex"
+    params:
+      icon : 'brand-github'
