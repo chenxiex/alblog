@@ -4,3 +4,13 @@ social:
     url : "https://github.com/chenxiex"
     params:
       icon : 'brand-github'
+  - identifier: "zhihu"
+    name: "zhihu"
+    url: "https://www.zhihu.com/people/qi-dian-47-70"
+    params:
+      icon: 'link'
+  - identifier: "email"
+    name: "email"
+    url: "mailto://anlor@anlor.top"
+    params:
+      icon: 'messages'
