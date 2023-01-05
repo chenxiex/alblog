@@ -184,9 +184,9 @@ ls /boot | grep 'vmlinuz'
 ```bash
 cp $esp/EFI/Manjaro/grubx64.efi $esp/EFI/boot/grubx64.efi
 ```
-然后重启电脑，启动项选shim进入shim，这时shim会有一个错误提示界面。不要慌，这时因为你的MOK文件还未导入MOK list。按页面提示进入MokManager，然后选择Enroll key，选择刚刚复制过来的`MOK.cer`，按提示导入这个密钥即可。
+然后重启电脑，启动项选shim进入shim，这时shim会有一个错误提示界面。不要慌，这是因为你的MOK文件还未导入MOK list。按页面提示进入MokManager，然后选择Enroll key，选择刚刚复制过来的`MOK.cer`，按提示导入这个密钥即可。
 ### 后续工作
-虽然现在你的电脑已经支持secureboot了，但是对grub和对vmlinuz的签名是一次性的，一但这两个软件更新，你就需要重新签名。这显然非常不方便。为此，我们可以设置两个pacman钩子，在这两个软件更新的时候自动进行签名。
+虽然现在你的电脑已经支持secureboot了，但是对grub和对vmlinuz的签名是一次性的，一旦这两个软件更新，你就需要重新签名。这显然非常不方便。为此，我们可以设置两个pacman钩子，在这两个软件更新的时候自动进行签名。
 首先是内核的，创建 `/etc/pacman.d/hooks/999-sign_kernel_for_secureboot.hook` 内容如下:
 ```bash
 [Trigger]
