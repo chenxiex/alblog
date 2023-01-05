@@ -3,7 +3,7 @@ mainSections:
 featuredImageField: image
 rssFullContent: true
 description: "Anlor's personal blog site"
-favicon: /images/favicon.ico
+favicon: /img/favicon.ico
 footer:
   since : 2022
 sidebar:
