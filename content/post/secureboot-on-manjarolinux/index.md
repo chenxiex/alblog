@@ -186,28 +186,41 @@ cp $esp/EFI/Manjaro/grubx64.efi $esp/EFI/boot/grubx64.efi
 ```
 然后重启电脑，启动项选shim进入shim，这时shim会有一个错误提示界面。不要慌，这是因为你的MOK文件还未导入MOK list。按页面提示进入MokManager，然后选择Enroll key，选择刚刚复制过来的`MOK.cer`，按提示导入这个密钥即可。
 ### 后续工作
-虽然现在你的电脑已经支持secureboot了，但是对grub和对vmlinuz的签名是一次性的，一旦这两个软件更新，你就需要重新签名。这显然非常不方便。为此，我们可以设置两个pacman钩子，在这两个软件更新的时候自动进行签名。
-首先是内核的，创建 `/etc/pacman.d/hooks/999-sign_kernel_for_secureboot.hook` 内容如下:
+虽然现在你的电脑已经支持secureboot了，但是对grub和对vmlinuz的签名是一次性的，一旦这两个软件更新，你就需要重新签名。这显然非常不方便。为此，我们可以设置两个pacman钩子，在这两个软件更新的时候自动进行签名。因为每个人终端环境不一样，比如我就无法直接使用archwiki上记载的hook。所以此处仅供参考。需要注意的是，以下命令并不检查签名情况，在已经签名的情况下依然会附加另一个签名，可能导致内核和grub不断增大。但以一般人更新的频率来看，应该不会有太大影响。
+
+创建`/usr/local/bin/sign_kernel_for_secureboot.sh`，内容如下：
+```bash
+#! /bin/sh
+/usr/bin/find /boot/ -maxdepth 1 -name 'vmlinuz-*' -exec /usr/bin/sh -c '/usr/bin/sbsign --key /etc/MOK/MOK.key --cert /etc/MOK/MOK.crt --output {} {};' \;
+```
+并且为其赋予可执行权限：
+```bash
+sudo chmod +x /usr/local/bin/sign_kernel_for_secureboot.sh
+```
+创建`/etc/pacman.d/hooks/999-sign_kernel_for_secureboot.hook`，内容如下：
 ```bash
 [Trigger]
 Operation = Install
 Operation = Upgrade
 Type = Package
-Target = $linux1
-Target = $linux2
+Target = linux
+Target = linux-lts
+Target = linux-hardened
+Target = linux-zen
+Target = linux-manjaro-xanmod
+Target = linux515
 
 [Action]
 Description = Signing kernel with Machine Owner Key for Secure Boot
 When = PostTransaction
-Exec = /usr/bin/find /boot/ -maxdepth 1 -name 'vmlinuz-*' -exec /usr/bin/sh -c 'if ! /usr/bin/sbverify --list {} 2>/dev/null | /usr/bin/grep -q "signature certificates"; then /usr/bin/sbsign --key /etc/MOK/MOK.key --cert /etc/MOK/MOK.crt --output {} {}; fi' ;
+Exec = /usr/local/bin/sign_kernel_for_secureboot.sh
 Depends = sbsigntools
 Depends = findutils
-Depends = grep
 ```
 这里的\$linuxX自行替换成你的linux内核包名。例如对于manjaro的5.15内核，这里应该替换为linux515。
 
 
-然后是对grub进行签名的钩子。因为我个人水平有限，不能把命令写进一行这么优雅，所以我新建了一个脚本来负责对grub进行签名。这里列出来，仅供参考。各位可以有自己的解决方案。
+然后是对grub进行签名的钩子。
 
 新建 `/usr/local/bin/sign_grub_for_secureboot.sh` 内容如下：
 ```bash
