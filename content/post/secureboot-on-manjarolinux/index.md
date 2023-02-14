@@ -154,6 +154,8 @@ GRUB_MODULES="$CD_MODULES
 ```
 之后source这个文件即可。
 
+>>> 注意：如果你在grub启动后遭遇`unkown tpm error`问题，请删除`tpm`模块。
+
 除了这些模块，你的grubx64.efi还需要有一个sbat小节。以下是完整的生成命令：
 ```bash
 source /etc/grub_modules
@@ -176,7 +178,7 @@ ls /boot | grep 'vmlinuz'
 ```
 得到你需要签名的文件的完整列表。
 
-后面这里的$esp/EFI/Manjaro是Manjaro的grub默认配置文件生成grub的位置。如果你是archlinux或者你自定义了grub配置，那么可能不是在这里。例如，archlinux的默认位置在\$esp/EFI/grub/grubx64.efi。
+后面这里的$esp/EFI/Manjaro是Manjaro的grub默认配置文件生成grub的位置。如果你是archlinux或者你自定义了grub配置，那么可能不是在这里。这个位置由`/etc/default/grub`中的`GRUB_DISTRIBUTOR`指定。
 
 签名完成后，将生成的`MOK.cer`复制到$esp/目录，为后续导入做准备。
 ### 完成
