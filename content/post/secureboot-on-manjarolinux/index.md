@@ -30,8 +30,8 @@ image: images/cover.webp
 
 ## 正文
 ### 释义
-下文中，\$esp指的是你的efi分区位置。请提前定义这个变量，或者在所有提到\$esp的地方自觉替换。
-以下命令大多数需要root权限。如果你遭遇权限问题，不妨加sudo执行。
+下文中，\$esp指的是你的efi分区位置。请在所有提到\$esp的地方自觉替换。
+下文中大多数命令需要root权限执行。
 ### 软件安装
 你需要安装以下软件：
 1. [shim-signed](https://aur.archlinux.org/packages/shim-signed/) (aur)
@@ -172,13 +172,16 @@ openssl x509 -outform DER -in MOK.crt -out MOK.cer
 sbsign --key MOK.key --cert MOK.crt --output /boot/$vmlinuz /boot/$vmlinuz
 sbsign --key MOK.key --cert MOK.crt --output $esp/EFI/Manjaro/grubx64.efi $esp/EFI/Manjaro/grubx64.efi
 ```
-这里的\$vmlinuz请替换成你自己的linux内核镜像文件名。你可以用
+这里的`$vmlinuz`请替换成你自己的linux内核镜像文件名。你可以用
 ```bash
 ls /boot | grep 'vmlinuz'
 ```
 得到你需要签名的文件的完整列表。
 
-后面这里的$esp/EFI/Manjaro是Manjaro的grub默认配置文件生成grub的位置。如果你是archlinux或者你自定义了grub配置，那么可能不是在这里。这个位置由`/etc/default/grub`中的`GRUB_DISTRIBUTOR`指定。
+这里的`$esp/EFI/Manjaro`是Manjaro的grub默认配置文件生成grub的位置。这个位置可能有以下几种情况：
+- 在没有配置文件的情况下执行`grub-install`，将会生成在`$esp/EFI/grub`
+- 在通过`grub-mkconfig`等命令创建了grub配置文件的情况下，这个位置由`/etc/default/grub`中的`GRUB_DISTRIBUTOR`指定。例如在Manjaro中，这个值默认是`manjaro`，所以最终生成目录在`$esp/EFI/Manjaro`
+请仔细确认你的grub生成位置。下文中提到`$esp/EFI/Manjaro`的地方，请自行替换。
 
 签名完成后，将生成的`MOK.cer`复制到$esp/目录，为后续导入做准备。
 ### 完成
@@ -209,7 +212,6 @@ Target = linux
 Target = linux-lts
 Target = linux-hardened
 Target = linux-zen
-Target = linux-manjaro-xanmod
 Target = linux515
 
 [Action]
@@ -219,7 +221,7 @@ Exec = /usr/local/bin/sign_kernel_for_secureboot.sh
 Depends = sbsigntools
 Depends = findutils
 ```
-这里的\$linuxX自行替换成你的linux内核包名。例如对于manjaro的5.15内核，这里应该替换为linux515。
+这里的`$linuxX`自行替换成你的linux内核包名。例如对于manjaro的5.15内核，这里应该替换为linux515。
 
 
 然后是对grub进行签名的钩子。
