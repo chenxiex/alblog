@@ -8,6 +8,7 @@ tags:
     - 软件安全
 image: images/cover.webp
 ---
+## 本文已过期。GRUB的一次更新要求GRUB使用的字体也必须签名，这让GRUB配置安全启动变得麻烦。如果要配置Secure Boot，推荐换用systemd-boot或rEFInd等引导器。对于这些引导器，Arch Wiki的教程已非常详细。
 ## 前言
 本文主要介绍使用shim+MOK+grub2实现安全启动全盘加密的Manjaro Linux。
 
@@ -15,14 +16,14 @@ image: images/cover.webp
 
 在开始以下工作之前，建议先将secureboot恢复到出厂设置。
 ## 分析
-首先当然要看看[Arch Wiki](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#top-page)。以下内容也大量借鉴了这篇wiki。虽然有中文页，但是中文页翻译不全而且比较老旧，还是建议看英文版。
+首先当然要看看[Arch Wiki](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#top-page)。以下内容也大量借鉴了这篇wiki。
 
 这里提到要发挥secure boot安全功能的建议：
 1. 设置一个强的硬件设置密码。（一般来说，在bios里面设置）
-2. 不使用默认的厂商密钥和第三方密钥。这比较困难，需要自己重新弄一套密钥，有变砖风险，这里就不折腾了。
+2. 不使用默认的厂商密钥和第三方密钥。根据Archwiki的警告，有变砖风险，这里就不折腾了。
 3. uefi直接启动内核，包括microcode和initramfs，不使用启动加载器。这主要是缩短启动信任链的长度，减少被攻击的环节。这个方案推荐和第2条一起食用，这样比较方便，这里也不折腾了。
 4. 启用全盘加密。避免能碰到你硬件的人乱动硬盘内容。
-5. 使用TPM加强secure boot。这在linux上尚处于比较早期的程度，要么你不需要配置，要么配置非常麻烦。这里不展开。
+5. 使用TPM加强secure boot。
 
 然后简单看看实现secureboot的方案。
 1. 首先就是使用自己的密钥，优点是所有情况都在自己掌握之中，你可以完全控制签名哪些启动项来启动，非常安全。缺点是容易变砖，另外你需要对每个启动项签名，对于windows你也要自己配置。这里不采用这种方案，因为怕变砖。
@@ -38,6 +39,7 @@ image: images/cover.webp
 2. [sbsigntools](https://archlinux.org/packages/?name=sbsigntools)
 
 ### 设置shim
+（注：本节部分有误。bootx64.efi是systemd-boot的默认位置。）
 备份bootx64.efi。这一般认为是电脑的默认启动项，我们用shim来代替他。
 ```bash
 mv $esp/EFI/boot/bootx64.efi $esp/EFI/boot/bootx64.efi.bak
