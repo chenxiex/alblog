@@ -5,9 +5,3 @@ compatibility_date = "2024-06-21"
 
 [vars]
 HUGO_VERSION = "0.127.0"
-
-[env.production]
-compatibility_date = "2024-06-21"
-
-  [env.production.vars]
-  HUGO_VERSION = "0.127.0"
