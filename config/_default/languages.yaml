@@ -1,10 +1,12 @@
 zh-cn: 
   languageName : "中文"
   title : "安洛的小窝"
-  description : "安洛的个人博客"
+  params : 
+    description: "安洛的个人博客"
   weight : 1
 en:
   languageName : "English"
   title: "Anlor's Blog"
-  description: "Anlor's personal blog site"
+  params: 
+    description: "Anlor's personal blog site"
   weight: 2
