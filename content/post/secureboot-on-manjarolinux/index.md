@@ -8,7 +8,7 @@ tags:
     - 软件安全
 image: images/cover.webp
 ---
-## 本文已过期。GRUB的一次更新要求GRUB使用的字体也必须签名，这让GRUB配置安全启动变得麻烦。如果要配置Secure Boot，推荐换用systemd-boot或rEFInd等引导器。对于这些引导器，Arch Wiki的教程已非常详细。
+## 本文已过期。GRUB的一次更新要求GRUB使用的字体也必须签名，这让GRUB配置安全启动变得麻烦。如果要配置Secure Boot，推荐换用systemd-boot或rEFInd等引导器。对于这些引导器，Arch Wiki的教程已非常详细。例如，我现在采用的systemd-boot+sbctl的方案，可参考[https://wiki.archlinuxcn.org/wiki/UEFI/%E5%AE%89%E5%85%A8%E5%90%AF%E5%8A%A8#sbctl](https://wiki.archlinuxcn.org/wiki/UEFI/%E5%AE%89%E5%85%A8%E5%90%AF%E5%8A%A8#sbctl)
 ## 前言
 本文主要介绍使用shim+MOK+grub2实现安全启动全盘加密的Manjaro Linux。
 
