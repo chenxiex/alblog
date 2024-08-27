@@ -9,6 +9,8 @@ tags:
     - 数学
 image: images/cover.webp
 ---
+封面图：[https://www.miyoushe.com/bh3/article/53423106](https://www.miyoushe.com/bh3/article/53423106)
+
 ## 应用背景
 用到卡特兰数的经典问题有：
 1. **括号匹配问题**：计算 $n$ 对括号正确配对的方案数。
