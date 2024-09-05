@@ -8,7 +8,6 @@ tags:
     - 快速幂
     - 数学
 image: images/cover.webp
-draft: true
 ---
 封面图：[https://www.bilibili.com/opus/967606108335112258](https://www.bilibili.com/opus/967606108335112258)
 
