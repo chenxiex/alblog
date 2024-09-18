@@ -7,7 +7,6 @@ tags:
     - 蓝桥杯
     - 树上启发式合并
 image: images/cover.webp
-draft: true
 ---
 封面图：[https://www.bilibili.com/opus/977994994306514949](https://www.bilibili.com/opus/977994994306514949)
 ## 引言
