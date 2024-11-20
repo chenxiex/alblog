@@ -1,7 +1,7 @@
 ---
 title: About
 description: Anlor's personal blog
-date: '2023-1-1'
+date: '2023-01-01'
 aliases:
   - about-us
   - contact
