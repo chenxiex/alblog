@@ -9,6 +9,8 @@ tags:
 image: images/cover.webp
 ---
 
+封面图源见水印
+
 ## 题目描述
 [洛谷P10389](https://www.luogu.com.cn/problem/P10389)
 
