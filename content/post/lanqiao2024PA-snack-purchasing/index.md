@@ -9,6 +9,8 @@ tags:
 image: images/cover.webp
 ---
 
+封面图源 [https://www.pixiv.net/artworks/87550307](https://www.pixiv.net/artworks/87550307)
+
 ## 题目描述
 [洛谷P10391](https://www.luogu.com.cn/problem/P10391)
 
