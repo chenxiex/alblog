@@ -9,6 +9,8 @@ tags:
 image: images/cover.webp
 ---
 
+如果您知道封面图出处，请在评论区留言。
+
 ## 题目描述
 
 [洛谷P9236](https://www.luogu.com.cn/problem/P9236)
