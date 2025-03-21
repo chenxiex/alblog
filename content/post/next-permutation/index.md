@@ -1,10 +1,11 @@
 ---
-title: "下一个排列"
+title: "[leetcode]下一个排列"
 date: 2025-03-21T14:49:55+08:00
 categories:
     - 算法
 tags:
     - 数学
+    - leetcode
 image: images/cover.webp
 ---
 
