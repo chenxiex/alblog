@@ -3,7 +3,7 @@ title: Links
 links:
   - title: Anlor's Cloud Drive
     description: My cloud drive, feel free to download resources here.
-    website: https://alspace.anlor.top
+    website: https://pan.anlor.top
     image: images/alspace.ico
 
 menu:

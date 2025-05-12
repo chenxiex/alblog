@@ -3,7 +3,7 @@ title: 链接
 links:
   - title: 安洛的小柜
     description: 我的网盘！看看有什么有趣的东西吧。
-    website: https://alspace.anlor.top
+    website: https://pan.anlor.top
     image: images/alspace.ico
 
 menu:
