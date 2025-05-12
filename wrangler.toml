@@ -7,6 +7,3 @@ not_found_handling = "404-page"
 
 [build]
 command = "hugo -e production"
-
-[var]
-HUGO_VERSION = "v0.147.2+extended+withdeploy"
