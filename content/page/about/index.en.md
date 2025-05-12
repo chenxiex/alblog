@@ -15,5 +15,5 @@ menu:
 ---
 
 This is Anlor's personal blog.
+
 Github repository: [https://github.com/chenxiex/alblog](https://github.com/chenxiex/alblog)
-Want to know more about me? Click [Anlor's homepage](https://www.anlor.top/)
