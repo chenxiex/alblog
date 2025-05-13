@@ -1,0 +1,5 @@
+{
+    "name": "alblog",
+    "image": "ghcr.io/chenxiex/alblog/devcontainer:latest",
+    "runArgs": ["--userns=keep-id"]
+}
