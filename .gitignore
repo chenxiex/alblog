@@ -2,3 +2,5 @@
 .env.build
 /public/
 resources/_gen
+node_modules
+.wrangler
