@@ -9,11 +9,7 @@
 			"extended": true,
 			"version": "latest"
 		},
-		"ghcr.io/joedmck/devcontainer-features/wrangler:1": {},
-		"ghcr.io/devcontainers/features/git-lfs:1": {
-			"autoPull": false,
-			"version": "latest"
-		}
+		"ghcr.io/joedmck/devcontainer-features/wrangler:1": {}
 	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
@@ -23,7 +19,7 @@
 	"forwardPorts": [1313, 8787],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "git lfs install",
+	// "postCreateCommand": "git lfs install",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
